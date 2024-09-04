@@ -32,7 +32,9 @@ E-Restro is a Restaurant Management System designed to streamline restaurant ope
 - Register and log in to place orders, manage the cart, and submit reservation requests.
 
 
+
 ## Technologies Used
+
 
 - **Backend:** Spring Boot
 - **Frontend:** Thymeleaf
@@ -41,13 +43,13 @@ E-Restro is a Restaurant Management System designed to streamline restaurant ope
 - **Data Access:** Spring Data JPA
 - **Language:** Java
 
-## Setup and Installation
 
-### Prerequisites
+## Prerequisites
 
 - Java 17 or higher
 - Maven
 - Oracle SQL Database
+
 
 ## Contact
 - For any questions or feedback, please reach out to **barmansagar01@gmail.com**.
