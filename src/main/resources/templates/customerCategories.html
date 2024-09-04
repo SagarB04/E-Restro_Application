@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{customerLayout}">
+<head>
+<title>Categories</title>
+<script type="text/javascript">
+	function handleSubmit(event) {
+		event.preventDefault();
+		let search = document.querySelector('input[name="search"]').value;
+		if (search.trim()) {
+			window.location.href = "/restaurant/customer/categories/" + search;
+		}
+	}
+	function viewProduct(id) {
+		window.location.href = "/restaurant/customer/" + id + "/viewproducts";
+	}
+</script>
+</head>
+<body>
+
+	<div layout:fragment="content" class="p-4 pt-0">
+
+		<div class="mb-4 w-100 text-center">
+			<form class="d-flex w-75 m-auto" onsubmit="handleSubmit(event)"
+				method="get">
+				<input class="form-control me-2" type="search" name="search"
+					placeholder="Search Category" aria-label="Search">
+				<button class="btn btn-outline-primary" type="submit">Search</button>
+			</form>
+		</div>
+		<h2 class="mb-4">Categories</h2>
+		<p th:if="${message}" class="text-success text-center message"
+			th:text="${message}"></p>
+		<div class="row">
+			<div class="col-lg-4 col-md-6 p-0 m-0 mb-3"
+				th:each="category : ${categories}">
+				<div class="card shadow mx-2 h-100">
+					<img th:src="${category.getImageUrl()}" class="card-img-top"
+						alt="Category Image" />
+					<div class="card-body">
+						<h5 class="card-title text-capitalize"
+							th:text="${category.getName()}">Category Name</h5>
+						<p class="card-text text-capitalize"
+							th:text="${category.getDescription()}">Category Description</p>
+						<div class="text-end">
+							<button th:onclick="viewProduct([[${category.getId()}]])"
+								class="btn btn-primary">View Product</button>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

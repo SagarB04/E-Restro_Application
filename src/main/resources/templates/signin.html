@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{loginLayout}">
+<head>
+<meta charset="UTF-8">
+<title>Sign in</title>
+
+</head>
+<body class="vh-100 bg-light">
+	<div layout:fragment="content" class="p-0 m-auto w-100 h-100 row">
+		<div class="card shadow col-12 col-sm-8 col-md-6 col-lg-4 m-auto p-4 h-100 ">
+
+				<h2 class="card-header text-center bg-secondary text-light">Sign In</h2>
+				<form th:action="@{/restaurant/signin}" method="post"
+					class="card-body">
+					<p th:if="${message}" class="text-success text-center message"
+						th:text="${message}"></p>
+					<div class="m-2">
+						<label for="username" class='form-label'>Username:</label> <input
+							type="text" id="username" name="username" class="form-control"
+							required />
+					</div>
+					<div class="m-2">
+						<label for="password" class='form-label'>Password:</label> <input
+							type="password" id="password" name="password"
+							class="form-control" required />
+					</div>
+
+					<p th:if="${param.error}" class="text-danger text-center">Invalid
+						username or password.</p>
+					<p th:if="${param.logout}" class="text-secondary text-center">You
+						have been logged out.</p>
+					<div class="m-2 text-center">
+						<button type="submit" class="btn btn-primary">Sign in</button>
+					</div>
+					<p class="text-secondary text-center">
+						New Customer? <a th:href=@{/restaurant/signup}>Sign Up</a>
+					</p>
+				</form>
+
+			</div>
+	</div>
+
+
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{adminLayout}">
+<head>
+<title>View Products</title>
+
+<script type="text/javascript">
+	function handleSubmit(event, categoryId) {
+		event.preventDefault();
+		let search = document.querySelector('input[name="search"]').value;
+
+		if (search.trim()) {
+			window.location.href = "/restaurant/admin/viewproducts?title="
+					+ search + "&categoryId=" + categoryId;
+		}
+	}
+</script>
+</head>
+<body>
+
+	<div layout:fragment="content" class="p-4 pt-0">
+
+		<div class="mb-4 w-100 text-center">
+			<form class="d-flex w-75 m-auto" id="searchForm"
+				th:onsubmit="handleSubmit(event, [[${productList[0].getCategoryId()}]])"
+				method="get">
+				<input class="form-control me-2" type="search" name="search"
+					placeholder="Search Product" aria-label="Search">
+				<button class="btn btn-outline-primary" type="submit">Search</button>
+			</form>
+		</div>
+		<h2 class="mb-4">Products</h2>
+		<p th:if="${secondary}" class="text-secondary text-center message"
+			th:text="${message}"></p>
+		<p th:if="${success}" class="text-success text-center message"
+			th:text="${message}"></p>
+		<p th:if="${danger}" class="text-danger text-center message"
+			th:text="${message}"></p>
+
+
+		<div class="row">
+			<div class="col-lg-4 col-md-6 p-0 m-0 mb-3" th:each="product : ${productList}">
+				<div class="card shadow mx-2 h-100">
+					<img th:src="${product.getImageUrl()}" class="card-img-top"
+						alt="Category Image" />
+					<div class="card-body">
+						<h5 class="card-title text-capitalize" th:text="${product.getName()}">name</h5>
+				
+						<p class="card-text">
+							Description:&nbsp;<span th:text="${product.getDescription()}"  class="text-capitalize"></span>
+						</p>
+						<p class="card-text">
+							Category:&nbsp;<span th:text="${product.getCategoryName()}" class="text-capitalize"></span>
+						</p>
+
+						<div class="d-flex justify-content-between align-items-end">
+							<p class="card-text d-inline">
+								<span>Rs.</span><span th:text="${product.getPrice() }"></span><span>/-</span>
+							</p>
+							<div class="d-flex justify-content-end">
+								<form class="d-inline p-2"
+									th:action="@{/restaurant/admin/product/update}" method="post">
+									<input class="form-control me-2 d-none" type="text" name="id"
+										th:value="${product.getId()}"> <input
+										class="form-control me-2 d-none" type="text" name="categoryId"
+										th:value="${product.getCategoryId()}">
+									<button class="btn btn-warning" type="submit">Update</button>
+								</form>
+								<form class="d-inline p-2"
+									th:action="@{/restaurant/admin/product/delete}" method="post">
+									<input class="form-control me-2 d-none" type="text" name="id"
+										th:value="${product.getId()}"> <input
+										class="form-control me-2 d-none" type="text" name="categoryId"
+										th:value="${product.getCategoryId()}">
+									<button class="btn btn-danger" type="submit">Delete</button>
+								</form>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

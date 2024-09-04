@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{customerLayout}">
+<head>
+<title>Reservation</title>
+</head>
+<body>
+
+	<div layout:fragment="content" class="h-100 m-auto">
+		<div class="card shadow col-12 col-md-10 col-lg-8 m-auto p-4 h-100 ">
+
+			<h1 class="text-center">Rerservation Request</h1>
+			<p th:if="${success}" class="text-success text-center message"
+				th:text="${success}"></p>
+			<p th:if="${danger}" class="text-danger text-center message"
+				th:text="${danger}"></p>
+			<form th:action="@{/restaurant/customer/reservation/request}"
+				method="post">
+				<div class="container">
+
+					<div class="row my-3">
+						<label for="tableSelect" class="form-label">Select Table:</label>
+						<select class="form-select" name="tableType" id="tableSelect"
+							required>
+							<option th:each="table : ${tables}" th:value="${table}"
+								th:text="${table}">Select a table</option>
+						</select>
+					</div>
+
+					<div class="row mb-3">
+						<label for="dateTime" class="form-label">Date & Time:</label> <input
+							type="datetime-local" class="form-control" name="dateTime"
+							id="dateTime" required />
+					</div>
+
+					<div class="row mb-3">
+						<label for="description" class="form-label">Description:</label>
+						<textarea class="form-control" name="description" id="description"
+							rows="3" required></textarea>
+					</div>
+
+					<div class="mb-3 text-end">
+						<button type="submit" class="btn btn-primary px-5">Submit</button>
+					</div>
+				</div>
+			</form>
+
+		</div>
+	</div>
+</body>
+</html>

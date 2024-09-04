@@ -1,0 +1,83 @@
+body{
+	background-color: #f8f9fa;
+}
+
+.menu {
+	background: lightskyblue;
+	border-top: 5px solid gray;
+}
+
+.menuRow {
+	height: calc(100vh - 68px);
+}
+
+
+ .nav-item .nav-link {
+	font-weight: 500;
+	color: rgb(210, 217, 223);
+}
+.nav-item .nav-link:hover {
+	color: white;
+	font-weight: 700;
+}
+ .nav-item .nav-link:active {
+	color: blue;
+	font-weight: 700;
+}
+.navbar-dark .navbar-nav .nav-link{
+		font-weight: 500;
+	color: rgb(210, 217, 223);
+}
+.navbar-dark .navbar-nav .nav-link:hover {
+	color: white;
+	font-weight: 700;
+}
+.navbar-dark .navbar-nav .nav-link:active {
+	color: blue;
+	font-weight: 700;
+}
+
+.signoutForm{
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+}
+.signoutForm button{
+	border: none;
+}
+
+
+
+
+/**/
+
+.btn{
+	font-size: .9rem;
+	padding: .5rem;
+	margin-bottom: .2rem;
+	font-weight: 600;
+}
+
+.card{
+	background-color: white;
+}
+
+.card img{
+	height: 40vh;
+	object-fit: cover;
+}
+.card span{
+	font-weight: 500;
+}
+.message{
+	font-weight: 600;
+	font-size: .9rem;
+}
+.status{
+	font-weight: 600;
+}
+
+label{
+	font-weight: 500;
+}
+

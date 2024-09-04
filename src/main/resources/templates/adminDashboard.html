@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{adminLayout}">
+<head>
+<title>Dashboard</title>
+</head>
+<body>
+
+	<div layout:fragment="content" class="p-4 pt-0">
+		<h2 class="mb-4">Admin Dashboard</h2>
+		<div class="row">
+
+			<div class="col-lg-4 col-md-6 p-0 m-0 mb-3">
+				<div class="card mx-2 h-100 shadow  rounded">
+					<div class="card-header fw-bolder">Categories</div>
+					<div class="card-body">
+						<div class="row">
+							<div class="col-md-6">
+								<h1></h1>
+							</div>
+							<div class="col-md-6 ">
+								<h1 class=" text-end" th:text="${catCount}">0</h1>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12 text-end">
+								<span class="pull-right">Total Categories</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-4 col-md-6 p-0 m-0 mb-3">
+				<div class="card mx-2 h-100 shadow  rounded">
+					<div class="card-header fw-bolder">Products</div>
+					<div class="card-body">
+						<div class="row">
+							<div class="col-md-6">
+								<h1></h1>
+							</div>
+							<div class="col-md-6 ">
+								<h1 class=" text-end" th:text="${prodCount}">0</h1>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12 text-end">
+								<span class="pull-right">Total Products</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-4 col-md-6 p-0 m-0 mb-3">
+				<div class="card mx-2 h-100 shadow  rounded">
+					<div class="card-header fw-bolder">Reservations</div>
+					<div class="card-body">
+						<div class="row">
+							<div class="col-md-6">
+								<h1></h1>
+							</div>
+							<div class="col-md-6 ">
+								<h1 class=" text-end" th:text="${resCount}">0</h1>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12 text-end">
+								<span class="pull-right">Total Reservations</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-4 col-md-6 p-0 m-0 mb-3">
+				<div class="card mx-2 h-100 shadow  rounded">
+					<div class="card-header fw-bolder">Orders</div>
+					<div class="card-body">
+						<div class="row">
+							<div class="col-md-6">
+								<h1></h1>
+							</div>
+							<div class="col-md-6 ">
+								<h1 class=" text-end" th:text="${orderCount}">0</h1>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12 text-end">
+								<span class="pull-right">Total Orders</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+
+		</div>
+		<div class="col-lg-4 col-md-6 p-0 m-0 mb-3"></div>
+		<div class="col-lg-4 col-md-6 p-0 m-0 mb-3"></div>
+		<div class="col-lg-4 col-md-6 p-0 m-0 mb-3"></div>
+	</div>
+
+</body>
+</html>

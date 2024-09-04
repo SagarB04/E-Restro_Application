@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{adminLayout}">
+<head>
+<title>Add Products</title>
+<style type="text/css">
+#imgPreview {
+	height: 30vh;
+	display: none;
+}
+</style>
+<script type="text/javascript">
+	window.onpageshow = function(event) {
+		if (event.persisted
+				|| (window.performance && window.performance.navigation.type == 2)) {
+			document.getElementById("myForm").reset();
+		}
+	};
+
+	function handleChange(event) {
+		var imageUrl = event.target.value;
+		var preview = document.getElementById('imgPreview');
+
+		preview.src = imageUrl;
+
+		if (imageUrl == null || imageUrl == "") {
+			preview.style.display = 'none';
+		} else {
+			preview.style.display = 'block';
+		}
+	}
+</script>
+</head>
+<body>
+
+	<div layout:fragment="content" class="p-0 m-auto w-100 h-100 row">
+		<div class="card shadow col-12 col-md-10 col-lg-8 m-auto p-4 h-100 ">
+			<h1 class="text-center">Add Product</h1>
+
+			<p th:if="${message}" class="text-danger text-center message"
+				th:text="${message}"></p>
+			<div class="mb-3 card-img-top img-container overflow-hidden">
+				<img alt="imgPreview" id="imgPreview"
+					th:src="${product}? ${product.getImageUrl()}:''" class="m-auto">
+			</div>
+			<form method="post" id="myForm"
+				th:action="@{/restaurant/admin/save/product}">
+
+				<div class="mb-3">
+					<label for="formFile" class="form-label">Image URL:</label> <input
+						class="form-control" type="text" name="imageUrl" id="formFile"
+						onchange="handleChange(event)" accept="image/*"
+						th:value="${product}? ${product.getImageUrl()}:''" required>
+				</div>
+
+				<div class="mb-3">
+					<label for="name" class="form-label">Name:</label> <input
+						type="text" name="name" class="form-control" id="name"
+						th:value="${product}? ${product.getName()}:''" required>
+				</div>
+
+				<div class="mb-3">
+					<label for="price" class="form-label">Price:</label> <input
+						type="text" name="price" class="form-control" id="price"
+						th:value="${product}? ${product.getPrice()}:''" required>
+				</div>
+
+				<div class="mb-3">
+					<label for="description" class="form-label">Description:</label> <input
+						type="text" name="description" class="form-control"
+						id="description"
+						th:value="${product}? ${product.getDescription()}:''" required>
+				</div>
+
+				<input type="text" name="categoryId" class="d-none" id="categoryId"
+					th:value="${categoryId}"> <input type="text" name="id"
+					class="d-none" id="id" th:value="${product}? ${product.getId()}: 0">
+				<div class="text-end">
+					<button type="submit" class="btn btn-primary ">Add
+						Product</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</body>
+</html>

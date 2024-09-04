@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{customerLayout}">
+<head>
+<title>My Reservations</title>
+
+<script type="text/javascript">
+	function handleSubmit(id) {
+		window.location.href = "/restaurant/customer/myreservation/delete?id="
+				+ id;
+	}
+</script>
+
+</head>
+<body>
+
+	<div layout:fragment="content">
+	
+		<h1 class="mb-4">All Reservations</h1>
+		<p th:if="${success}" class="text-success text-center message"
+			th:text="${success}"></p>
+		<p th:if="${danger}" class="text-danger text-center message"
+			th:text="${danger}"></p>
+
+		<table class="table shadow table-striped bg-white">
+			<thead>
+				<tr>
+					<th scope="col">Table Type</th>
+					<th scope="col">Description</th>
+					<th scope="col">Time</th>
+					<th scope="col">Date</th>
+					<th scope="col">Status</th>
+					<th scope="col"></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each=" reservation : ${reservations}">
+					<td th:text="${reservation.getTableType()}">Table Type</td>
+					<td th:text="${reservation.getDescription()}">Description</td>
+					<td th:text="${reservation.getTime()}">Time</td>
+					<td th:text="${reservation.getDateTime().toLocalDate()}">Date</td>
+					
+					<td th:if="${reservation.checkPending()}" class="text-warning status"
+						th:text="${reservation.getStatus()}">Status</td>
+					<td th:if="${reservation.checkApproved()}" class="text-success status"
+						th:text="${reservation.getStatus()}">Status</td>
+					<td th:if="${reservation.checkDisapproved()}" class="text-danger status"
+						th:text="${reservation.getStatus()}">Status</td>
+						
+					<td th:if="${reservation.checkPending()}">
+						<button th:onclick="handleSubmit([[${reservation.getId()}]])"
+							class="btn btn-danger">Cancel</button>
+					</td>
+					<td th:if="!${reservation.checkPending()}"></td>
+					
+				</tr>
+			</tbody>
+
+		</table>
+
+	</div>
+</body>
+</html>

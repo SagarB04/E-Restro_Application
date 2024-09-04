@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{customerLayout}">
+<head>
+<title>My Reservations</title>
+
+<script type="text/javascript">
+	function pay(id) {
+		window.location.href = "/restaurant/customer/cart/pay?id=" + id;
+	}
+	function remove(id) {
+		window.location.href = "/restaurant/customer/cart/remove?id=" + id;
+	}
+</script>
+
+</head>
+<body>
+
+	<div layout:fragment="content">
+		<h1 class="mb-4">Your Orders</h1>
+		<p th:if="${success}" class="text-success text-center message"
+			th:text="${success}"></p>
+		<p th:if="${danger}" class="text-danger text-center message"
+			th:text="${danger}"></p>
+
+		<table class="table shadow table-striped bg-white">
+			<thead>
+				<tr>
+					<th scope="col">Order Id</th>
+					<th scope="col">Product</th>
+					<th scope="col">Price</th>
+					<th scope="col">Status</th>
+					<th scope="col">Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each=" order : ${orders}">
+					<td th:text="${order.getId()}">Id</td>
+					<td th:text="${order.getProductName()}">Name</td>
+					<td th:text="${order.getPrice()}">price</td>
+
+					<td th:if="${order.checkPending()}" class="text-warning status"
+						th:text="${order.getStatus()}">Status</td>
+					<td th:if="${order.checkInProgress()}" class="text-primary status"
+						th:text="${order.getStatus()}">Status</td>
+					<td th:if="${order.checkRejected()}" class="text-danger status"
+						th:text="${order.getStatus()}">Status</td>
+					<td th:if="${order.checkDelivered()}" class="text-success status"
+						th:text="${order.getStatus()}">Status</td>
+
+					<td th:if="${order.checkPending()}">
+						<button th:onclick="pay([[${order.getId()}]])"
+							class="btn btn-warning">Pay</button>
+						<button th:onclick="remove([[${order.getId()}]])"
+							class="btn btn-danger">Remove</button>
+					</td>
+					<td th:if="${order.checkInProgress()}">
+						<button th:onclick="remove([[${order.getId()}]])"
+							class="btn btn-outline-danger">Cancel</button>
+					</td>
+					<td th:if="${order.checkRejected()}"></td>
+					<td th:if="${order.checkDelivered()}"></td>
+				</tr>
+			</tbody>
+
+		</table>
+
+	</div>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{loginLayout}">
+<head>
+<meta charset="UTF-8">
+<title>Home</title>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+	crossorigin="anonymous">
+</head>
+<body class="vh-100 bg-light">
+	<div layout:fragment="content">
+
+		<div>
+			<div id="carouselExampleControls" class="carousel slide"
+				data-bs-ride="carousel shadow rounded">
+				<div class="carousel-inner shadow rounded">
+					<div class="carousel-item active" data-bs-interval="2000">
+						<img
+							src="https://i.pinimg.com/564x/8a/72/e4/8a72e40e3ebb94b8bb281abbf09b16c0.jpg"
+							class="d-block w-100" style="height: 350px" alt="Loading...">
+					</div>
+					<div class="carousel-item" data-bs-interval="2000">
+						<img
+							src="https://i.pinimg.com/564x/11/1b/d7/111bd78fc89051714a2ded1c9c5a9e80.jpg"
+							class="d-block w-100" style="height: 350px" alt="Loading...">
+					</div>
+					<div class="carousel-item" data-bs-interval="2000">
+						<img
+							src="https://i.pinimg.com/564x/35/7c/60/357c60f81e734c65e2439ad06713111e.jpg"
+							class="d-block w-100" style="height: 350px" alt="Loading...">
+					</div>
+					<div class="carousel-item" data-bs-interval="2000">
+						<img
+							src="https://i.pinimg.com/564x/84/6c/16/846c16f31decfedef0f96bf3c9a61dbf.jpg"
+							class="d-block w-100" style="height: 350px" alt="Loading...">
+					</div>
+				</div>
+				<button class="carousel-control-prev" type="button"
+					data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+					<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+					<span class="visually-hidden">Previous</span>
+				</button>
+				<button class="carousel-control-next" type="button"
+					data-bs-target="#carouselExampleControls" data-bs-slide="next">
+					<span class="carousel-control-next-icon" aria-hidden="true"></span>
+					<span class="visually-hidden">Next</span>
+				</button>
+			</div>
+		</div>
+		<div class="my-4">
+			<div class="text-center fw-bold fs-1">Welcome to E-Restro</div>
+			<div class="text-center fw-normal fs-5">Restaurant Management
+				Application</div>
+		</div>
+
+	</div>
+	<!-- Bootstrap-->
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+		crossorigin="anonymous"></script>
+</body>
+</html>

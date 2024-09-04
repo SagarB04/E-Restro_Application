@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{adminLayout}">
+<head>
+<title>Orders</title>
+
+<script type="text/javascript">
+	function delevered(id) {
+		window.location.href = "/restaurant/admin/order/delivered?id=" + id;
+	}
+	function rejected(id) {
+		window.location.href = "/restaurant/admin/order/rejected?id=" + id;
+	}
+</script>
+
+</head>
+<body>
+
+	<div layout:fragment="content">
+	
+		<h1 class="mb-4">All Orders</h1>
+		<p th:if="${success}" class="text-success text-center"
+			th:text="${success}"></p>
+		<p th:if="${danger}" class="text-danger text-center"
+			th:text="${danger}"></p>
+
+		<table class="table table-striped bg-white shadow">
+			<thead>
+				<tr>
+					<th scope="col">Order Id</th>
+					<th scope="col">Customer</th>
+					<th scope="col">Product</th>
+					<th scope="col">Price</th>
+					<th scope="col">Status</th>
+					<th scope="col">Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each=" order : ${orders}">
+					<td th:text="${order.getId()}">Id</td>
+					<td th:text="${order.getName()}">Customer</td>
+					<td th:text="${order.getProductName()}">Name</td>
+					<td th:text="${order.getPrice()}">price</td>
+
+					<td th:if="${order.checkPending()}" class="text-warning status"
+						th:text="${order.getStatus()}">Status</td>
+					<td th:if="${order.checkInProgress()}" class="text-primary status"
+						th:text="${order.getStatus()}">Status</td>
+					<td th:if="${order.checkRejected()}" class="text-danger status"
+						th:text="${order.getStatus()}">Status</td>
+					<td th:if="${order.checkDelivered()}" class="text-success status"
+						th:text="${order.getStatus()}">Status</td>
+
+					<td th:if="${order.checkInProgress()}">
+						<button th:onclick="delevered([[${order.getId()}]])"
+							class="btn btn-success">Deliver</button>
+						<button th:onclick="rejected([[${order.getId()}]])"
+							class="btn btn-danger">Reject</button>
+					</td>
+					<td th:if="${order.checkPending()}"></td>
+					<td th:if="${order.checkRejected()}"></td>
+					<td th:if="${order.checkDelivered()}"></td>
+				</tr>
+			</tbody>
+
+		</table>
+
+	</div>
+</body>
+</html>

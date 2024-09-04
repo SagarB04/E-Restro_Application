@@ -1,0 +1,83 @@
+<!-- layout.html -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta charset="UTF-8">
+<title>food</title>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+	crossorigin="anonymous">
+
+<link th:href="@{/css/style.css}" rel="stylesheet" />
+</head>
+<body class="vh-100">
+
+	<div layout:fragment="navbar">
+		<nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
+			<div class="container-fluid">
+				<a class="navbar-brand " th:href="@{/restaurant/admin/categories}"><strong class="fs-3">E-Restro</strong></a>
+				<button class="navbar-toggler ms-auto" type="button"
+					data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+					aria-controls="navbarSupportedContent" aria-expanded="false"
+					aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+						
+						<li class="nav-item signoutForm px-1">
+							<form class="m-0 nav-link" th:action="@{/logout}" method="post">
+								<button class="m-0 p-0 bg-dark nav-link" type="submit">Sign
+									Out</button>
+							</form>
+						</li>
+					</ul>
+				</div>
+			
+			</div>
+		</nav>
+	</div>
+
+	<div class="row menuRow m-0">
+
+		<div class="col-sm-4 col-12 col-md-3 col-lg-2 menu m-0 bg-dark">
+			<ul class="nav flex-column">
+				<li class="nav-item text-light py-2 fs-5"><b>Welcome </b><b
+					th:text="${name}" class="text-capitalize">Admin</b><b>!</b></li>
+
+				<li class="nav-item"><a class="nav-link" aria-current="page"
+					th:href="@{/restaurant/admin/dashboard}"> Dashboard</a></li>
+
+				<li class="nav-item"><a class="nav-link" aria-current="page"
+					th:href="@{/restaurant/admin/categories}"> Categories</a></li>
+
+				<li class="nav-item"><a class="nav-link"
+					th:href="@{/restaurant/admin/postcategory}">Post Category</a></li>
+
+				<li class="nav-item"><a class="nav-link fee-nav-link"
+					th:href="@{/restaurant/admin/allviewproducts}">All Products</a></li>
+
+				<li class="nav-item"><a class="nav-link "
+					th:href="@{/restaurant/admin/reservations}">Reservations</a></li>
+
+				<li class="nav-item"><a class="nav-link"
+					th:href="@{/restaurant/admin/orders}">Orders</a></li>
+
+			</ul>
+		</div>
+		<div class="col-sm-8 col-12 col-md-9 col-lg-10 mx-auto p-4">
+			<section layout:fragment="content"></section>
+		</div>
+
+	</div>
+
+	<!-- Bootstrap-->
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+		crossorigin="anonymous"></script>
+</body>
+</html>
