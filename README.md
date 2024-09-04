@@ -23,6 +23,15 @@ E-Restro is a Restaurant Management System designed to streamline restaurant ope
 - **Reservation Requests:** Submit reservation requests.
 - **Reservation Tracking:** View and track the status of reservations.
 
+## Usage
+
+### Admin Login
+- Using admin credentials, can access the admin module and manage categories, products, reservations, and orders.
+
+### Customer Registration
+- Register and log in to place orders, manage the cart, and submit reservation requests.
+
+
 ## Technologies Used
 
 - **Backend:** Spring Boot
@@ -39,3 +48,6 @@ E-Restro is a Restaurant Management System designed to streamline restaurant ope
 - Java 17 or higher
 - Maven
 - Oracle SQL Database
+
+## Contact
+- For any questions or feedback, please reach out to **barmansagar01@gmail.com**.
